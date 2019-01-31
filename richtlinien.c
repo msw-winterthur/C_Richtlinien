@@ -1,10 +1,10 @@
 /*********************************************************************************\
 *
-* MMMMMMMMMMMMMMMMMM   SSSSSSSSSSSSSSSSSS   WWWW   WWWW   WWWW   
+* MMMMMMMMMMMMMMMMMM   SSSSSSSSSSSSSSSSSS   WWWW   WWWW   WWWW
 * MMMMMMMMMMMMMMMMMM   SSSSSSSSSSSSSSSSSS   WWWW   WWWW   WWWW   MECHATRONIK
-* MMMMMMMMMMMMMMMMMM   SSSSS                WWWW   WWWW   WWWW   
+* MMMMMMMMMMMMMMMMMM   SSSSS                WWWW   WWWW   WWWW
 * MMMM   MMMM   MMMM   SSSSSSSSSSSSSSSSSS   WWWW   WWWW   WWWW   SCHULE
-* MMMM   MMMM   MMMM   SSSSSSSSSSSSSSSSSS   WWWW   WWWW   WWWW   
+* MMMM   MMMM   MMMM   SSSSSSSSSSSSSSSSSS   WWWW   WWWW   WWWW
 * MMMM   MMMM   MMMM                SSSSS   WWWWWWWWWWWWWWWWWW   WINTERTHUR
 * MMMM   MMMM   MMMM   SSSSSSSSSSSSSSSSSS   WWWWWWWWWWWWWWWWWW
 * MMMM   MMMM   MMMM   SSSSSSSSSSSSSSSSSS   WWWWWWWWWWWWWWWWWW   www.msw.ch
@@ -14,7 +14,7 @@
 *
 * Projekt  : cRichtlinien
 * Hardware : Mocca-Board, ATmega2560v von Atmel
-
+*
 *
 * Copyright: MSW, AE2
 *
@@ -36,8 +36,8 @@
 *  - Wartbarkeit,
 *  - Erweiterbarkeit und
 *  - Wiederverwendbarkeit
-* zu erhöhen. 
-* 
+* zu erhöhen.
+*
 * Mit den nachfolgend festgelegten Regeln sollen folgende Prinzipien umgesetzt
 * werden:
 *  - Prinzip der integrierten Dokumentation
@@ -45,16 +45,24 @@
 *  - Prinzip der Verbalisierung
 *    (Alle Namen werden so gewählt, dass sie ihre Funktion preisgeben)
 *
-* Namen beginnen immer mit einem Kleinbuchstaben. Zusammengesetzte Wörter werden
-* durch Grossbuchstaben getrennt. Z. B. : diesIstEinVariabelName
-*
-* Namen von Konstanten und Definitionen, also Werte die nicht verändert werden
-* können, werden in Grossbuchstaben geschrieben. Zusammengesetzte Wörter werden
-* mit "_" getrennt. Z. B. : ICH_BIN_EINE_KONSTANTE
-*
-* Um die Portierbarkeit zu erhöhen werden ausschliesslich Standardisierte
-* Datentypen aus stdint.h verwendet. Siehe auch:
-* https://de.wikibooks.org/wiki/C-Programmierung_mit_AVR-GCC/_Datentypen
+* ==========================Hier die wichtigsten Regeln==========================
+*                                                                               |
+* - Es werden KEINE Tabulatoren verwendet, sondern nur Leerzeichen.             |
+*                                                                               |
+* - Namen beginnen immer mit einem Kleinbuchstaben. Zusammengesetzte Wörter     |
+*   werden durch Grossbuchstaben getrennt. Z. B. : diesIstEinVariabelname oder  |
+*   diesIstEinFunktionsname                                                     |
+*                                                                               |
+* - Namen von Konstanten und Definitionen, also Werte die nicht verändert       |
+*   werden können, werden in Grossbuchstaben geschrieben. Zusammengesetzte      |
+*   Wörter werden mit "_" getrennt. Z. B. : ICH_BIN_EINE_KONSTANTE              |
+*                                                                               |
+* - Um die Portierbarkeit zu erhöhen werden ausschliesslich Standardisierte     |
+*   Datentypen aus stdint.h verwendet. Z. B. : uint8_t oder uint16_t            |
+*   Siehe auch:                                                                 |
+*   https://de.wikibooks.org/wiki/C-Programmierung_mit_AVR-GCC/_Datentypen      |
+*                                                                               |
+* ===============================================================================
 *
 * Portbelegung:
 * =============
@@ -67,7 +75,7 @@
 * PORTK.5 nicht belegt
 * PORTK.6 nicht belegt
 * PORTK.7 nicht belegt
-* 
+*
 * Ausgänge
 * PORTA.0 nicht belegt
 * PORTA.1 nicht belegt
@@ -81,17 +89,24 @@
 * ========
 * Datum:      Autor:         Version   Grund der Änderung:
 * dd.mm.yyyy  M. Muster      V1.0      Neuerstellung
-*     
+*
 \*********************************************************************************/
 
-#include <stdint.h>                 //Standardisierte Datentypen
-#include <avr/io.h>                 //ATmega2560v I/O-Definitionen
+//Standardisierte Datentypen
+#include <stdint.h>
+//ATmega2560v I/O-Definitionen
+#include <avr/io.h>
 
-#define SCHALTER    PINK            //Definiere dein Eingangsport
-#define LED         PORTA           //Definiere den Ausgangsport
-#define INIT_LED    (DDRA = 0xFF)   //Initialisiert den Ausgangsport
+//Kommentare dürfen als Block wie hier festgelegt werden:
+//Definition des Eingangsports
+#define SCHALTER    PINK
+//Definition des Ausgangsports
+#define LED         PORTA
+//Initialisierung des Ausgangsports
+#define INIT_LED    (DDRA = 0xFF)
 
-uint8_t zustand = 0;                //Definition einer globalen Variable
+//Definition einer globalen Variabel
+uint8_t zustand = 0;
 
 /*********************************************************************************\
 * invertiereLeds
@@ -108,8 +123,8 @@ uint8_t zustand = 0;                //Definition einer globalen Variable
 \*********************************************************************************/
 uint8_t invertiereLeds(uint8_t zuInvertierendeBits)
 {
-    LED = LED ^ zuInvertierendeBits;//zu invertierende LEDs toggeln
-    return LED;                     //neuer Anzeigewert zurückgeben
+    LED = LED ^ zuInvertierendeBits;
+    return LED;
 }
 
 /*********************************************************************************\
@@ -120,26 +135,33 @@ uint8_t invertiereLeds(uint8_t zuInvertierendeBits)
 \*********************************************************************************/
 void invertiereAlleLeds(void)
 {
-    LED = ~LED;                     //Anzeige invertieren
+    LED = ~LED;
 }
 
 /* Hauptprogramm *****************************************************************/
 int main(void)
-{	uint8_t i;                      //Es werden nur Standardisierte Datentypen
-    int8_t temperatur;              //..verwendet, mehr dazu im Fileheader.
-    uint16_t messwert;              //Zwischenspeicher für Messwerte
-    uint32_t resultat;              //Berechnungen werden hier abgespeichert
-
-	INIT_LED;		                //Port LED auf Ausgang initialisieren (alle Pins)
-	
-	while(1)			            //Endlosschlaufe
-	{
-		Anweisungen;                //Schalterstellungen an LED's ausgeben
-                                    //Kommentare werden rechts vom Code geschrieben
-                                    //..und werden auf der nächsten Zeile
-                                    //..vortgesetzt falls der Platz nicht reicht.
+{   
+    //Es werden nur Standardisierte Datentypen verwendet, mehr dazu im Fileheader.
+    uint8_t i;
+    //Temperatur in milli Grad Celsius
+    int8_t temperatur;
+    //Zwischenspeicher für Messwerte
+    uint16_t messwert;
+    //Berechnungen werden hier abgespeichert
+    uint32_t resultat;
+    
+    //Port LED auf Ausgang initialisieren
+    INIT_LED;
+    
+    //Endlosschlaufe
+    while(1)
+    {
+        Anweisungen;                //Kommentare können auch rechts vom Code
+                                    //..geschrieben und und auf der
+                                    //..nächsten Zeile vortgesetzt werden, falls
+                                    //.. der Platz nicht reicht.
                                     //Pro Zeile stehen maximal 83 Zeichen.
-                                    
+        
         if (resultat > 0)           //Vor und nach jedem Operator steht ein Abstand
         {                           //Geschwungene Klammern stehen auf eigenen Zeilen
             Anweisungen;            //Alles was innerhalb geschwungener Klammern
@@ -148,25 +170,29 @@ int main(void)
         {
             Anweisungen;
         }
-                
-        for (i = 0; i < 4; i ++)    //So sieht der Kopf einer For-Schleife aus
+        
+        //So sieht der Kopf einer For-Schleife aus
+        for (i = 0; i < 4; i ++)
         {
             Anweisungen;
         }
-                         
-        switch (i)                  //So werden Switch-Statements formatiert
+        
+        //So werden Switch-Statements formatiert
+        switch (i)
         {
+            //1: die entsprechenden Anweisungen werden in diesem case ausgeführt
             case 1:
-                Anweisungen;        //Anweisungen werden eingerückt
-            break;
+                //Anweisungen werden eingerückt
+                Anweisungen;
+                break;
             case 2:
                 Anweisungen;
-            break;
+                break;
             default:
                 Anweisungen;
         }
-                         
-	} // end while
-} // end main
+        
+    }                               // end while
+}                                   // end main
 
 
