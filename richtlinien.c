@@ -145,7 +145,7 @@ void invertiereAlleLeds(void)
 
 /* Hauptprogramm *****************************************************************/
 int main(void)
-{   
+{
     //Es werden nur Standardisierte Datentypen verwendet, mehr dazu im Fileheader.
     uint8_t i;
     //Temperatur in milli Grad Celsius
@@ -168,9 +168,9 @@ int main(void)
         Anweisungen;                //Pro Zeile stehen maximal 83 Zeichen.
         
         if (resultat > 0)           //Vor und nach jedem Operator steht ein Abstand
-        {                           //Geschwungene Klammern stehen auf eigenen Zeilen
-            Anweisungen;            //Alles was innerhalb geschwungener Klammern
-        }                           //..steht, wird eingerückt.
+        {                           //Geschwungene Klammern stehen auf eigenen 
+            Anweisungen;            //..Zeilen alles was innerhalb geschwungener 
+        }                           //..Klammern steht, wird eingerückt.
         else
         {
             Anweisungen;
@@ -187,17 +187,15 @@ int main(void)
         {
             //1: die entsprechenden Anweisungen werden in diesem case ausgeführt
             case 1:
-                //Anweisungen werden eingerückt
-                Anweisungen;
-                break;
+            //Anweisungen werden eingerückt
+            Anweisungen;
+            break;
             case 2:
-                Anweisungen;
-                break;
+            Anweisungen;
+            break;
             default:
-                Anweisungen;
+            Anweisungen;
         }
         
     }                               // end while
 }                                   // end main
-
-
