@@ -47,7 +47,8 @@
 *
 * ==========================Hier die wichtigsten Regeln==========================
 *                                                                               |
-* - Es werden KEINE Tabulatoren verwendet, sondern nur Leerzeichen.             |
+* - Es werden KEINE Tabulatoren verwendet, sondern nur Leerzeichen. Eine        |
+*   Enrückung entspricht 4 Leerzeichen.                                         |
 *                                                                               |
 * - Namen beginnen immer mit einem Kleinbuchstaben. Zusammengesetzte Wörter     |
 *   werden durch Grossbuchstaben getrennt. Z. B. : diesIstEinVariabelname oder  |
@@ -61,6 +62,10 @@
 *   Datentypen aus stdint.h verwendet. Z. B. : uint8_t oder uint16_t            |
 *   Siehe auch:                                                                 |
 *   https://de.wikibooks.org/wiki/C-Programmierung_mit_AVR-GCC/_Datentypen      |
+*                                                                               |
+* - Auf einer Zeile stehen maximal 83 Zeichen.                                  |
+*                                                                               |
+* - Geschwungene Klammern, "{" oder "}" stehen auf einer separaten Zeile.       |
 *                                                                               |
 * ===============================================================================
 *
@@ -157,10 +162,10 @@ int main(void)
     while(1)
     {
         Anweisungen;                //Kommentare können auch rechts vom Code
-                                    //..geschrieben und und auf der
-                                    //..nächsten Zeile vortgesetzt werden, falls
-                                    //.. der Platz nicht reicht.
-                                    //Pro Zeile stehen maximal 83 Zeichen.
+        Anweisungen;                //..geschrieben und und auf der
+        Anweisungen;                //..nächsten Zeile vortgesetzt werden, falls
+        Anweisungen;                //.. der Platz nicht reicht.
+        Anweisungen;                //Pro Zeile stehen maximal 83 Zeichen.
         
         if (resultat > 0)           //Vor und nach jedem Operator steht ein Abstand
         {                           //Geschwungene Klammern stehen auf eigenen Zeilen
@@ -171,7 +176,7 @@ int main(void)
             Anweisungen;
         }
         
-        //So sieht der Kopf einer For-Schleife aus
+        //So sieht der Kopf einer For-Schlaufe aus
         for (i = 0; i < 4; i ++)
         {
             Anweisungen;
