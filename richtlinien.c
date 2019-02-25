@@ -126,7 +126,7 @@ uint8_t zustand = 0;
 * Rückgabewert: Der neu angezeigte Wert wird zurückgegeben.
 *
 \*********************************************************************************/
-uint8_t invertiereLeds(uint8_t zuInvertierendeBits)
+uint8_t invertiereLeds (uint8_t zuInvertierendeBits)
 {
     LED = LED ^ zuInvertierendeBits;
     return LED;
@@ -138,13 +138,13 @@ uint8_t invertiereLeds(uint8_t zuInvertierendeBits)
 * Invertiert alle LEDs.
 *
 \*********************************************************************************/
-void invertiereAlleLeds(void)
+void invertiereAlleLeds (void)
 {
     LED = ~LED;
 }
 
 /* Hauptprogramm *****************************************************************/
-int main(void)
+int main (void)
 {
     //Es werden nur Standardisierte Datentypen verwendet, mehr dazu im Fileheader.
     uint8_t i;
@@ -159,7 +159,7 @@ int main(void)
     INIT_LED;
     
     //Endlosschlaufe
-    while(1)
+    while (1)
     {
         Anweisungen;                //Kommentare können auch rechts vom Code
         Anweisungen;                //..geschrieben und und auf der
