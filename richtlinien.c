@@ -110,7 +110,14 @@
 //Initialisierung des Ausgangsports
 #define INIT_LED    (DDRA = 0xFF)
 
-//Definition einer globalen Variabel
+//Definition eines Enumarated types (enum)
+typedef enum tag_t {MONTAG, DIENSTAG, MITTWOCH, DONNERSTAG,
+                    FREITAG, SAMSTAG, SONNTAG};
+
+//Definition einer globalen Variabel eines eigenen Types
+tag_t heute = DIENSTAG;
+
+//Definition einer globalen Variabel eines standard Types
 uint8_t zustand = 0;
 
 /*********************************************************************************\
