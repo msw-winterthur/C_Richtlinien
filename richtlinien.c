@@ -110,9 +110,10 @@
 //Initialisierung des Ausgangsports
 #define INIT_LED    (DDRA = 0xFF)
 
-//Definition eines Enumarated types (enum)
+//Definition eines Enumarated types (enum). Der eigene Datentyp "tag_t" braucht ein
+//angehängtes "_t" um zu markieren, dass es sich um einen Datentypen handelt.
 typedef enum tag_t {MONTAG, DIENSTAG, MITTWOCH, DONNERSTAG,
-                    FREITAG, SAMSTAG, SONNTAG};
+                    FREITAG, SAMSTAG, SONNTAG} tag_t;
 
 //Definition einer globalen Variabel eines eigenen Types
 tag_t heute = DIENSTAG;
