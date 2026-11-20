@@ -8,16 +8,16 @@ Konventionen sind Regeln, an die sich Entwickler halten, um die Softwarequalitä
 
 ## 1. Grundprinzipien
 
-* **Prinzip der integrierten Dokumentation:** Die Dokumentation ist direkt in den Kommentaren im Quellcode enthalten.
-* **Prinzip der Verbalisierung:** Alle Namen werden so gewählt, dass sie ihre Funktion und Bedeutung klar preisgeben.
+- **Prinzip der integrierten Dokumentation:** Die Dokumentation ist direkt in den Kommentaren im Quellcode enthalten.
+- **Prinzip der Verbalisierung:** Alle Namen werden so gewählt, dass sie ihre Funktion und Bedeutung klar preisgeben.
 
 ---
 
 ## 2. Formatierung & Code-Layout
 
 ### 2.1 Einrückung und Tabulatoren
-* **Keine Tabulatoren (`\t`) verwenden!** Es dürfen ausschließlich Leerzeichen genutzt werden.
-* Eine Einrückungsebene entspricht genau **4 Leerzeichen**.
+- **Keine Tabulatoren (`\t`) verwenden!** Es dürfen ausschließlich Leerzeichen genutzt werden.
+- Eine Einrückungsebene entspricht genau **4 Leerzeichen**.
 
 ```c
 void beispielFunktion(void)
@@ -28,7 +28,7 @@ void beispielFunktion(void)
 ```
 
 ### 2.2 Maximale Zeilenlänge
-* Pro Zeile stehen **maximal 83 Zeichen**. Dies garantiert gute Lesbarkeit auf allen Bildschirmen und in Code-Reviews.
+- Pro Zeile stehen **maximal 83 Zeichen**. Dies garantiert gute Lesbarkeit auf allen Bildschirmen und in Code-Reviews.
 
 ```c
 // Gute Aufteilung bei langen Zeilen / Kommentaren:
@@ -37,7 +37,7 @@ Anweisungen; // Kommentare können auch rechts vom Code und auf der
 ```
 
 ### 2.3 Geschwungene Klammern `{}`
-* Geschwungene Klammern stehen **immer auf einer separaten Zeile** und werden nicht an die Anweisung angehängt.
+- Geschwungene Klammern stehen **immer auf einer separaten Zeile** und werden nicht an die Anweisung angehängt.
 
 ```c
 // Richtig:
@@ -53,7 +53,7 @@ if (bedeutung == 1)
 ```
 
 ### 2.4 Leerzeichen um Operatoren
-* Vor und nach jedem Operator (Zuweisungen, Vergleiche, arithmetische Operatoren) steht ein Leerzeichen.
+- Vor und nach jedem Operator (Zuweisungen, Vergleiche, arithmetische Operatoren) steht ein Leerzeichen.
 
 ```c
 // Richtig:
@@ -71,8 +71,8 @@ for (uint16_t i = 0; i < 4; i++)
 ## 3. Namenskonventionen
 
 ### 3.1 Variablen und Funktionen (`lowerCamelCase`)
-* Namen beginnen immer mit einem **Kleinbuchstaben**.
-* Zusammengesetzte Wörter werden durch Großbuchstaben getrennt (*lowerCamelCase*).
+- Namen beginnen immer mit einem **Kleinbuchstaben**.
+- Zusammengesetzte Wörter werden durch Großbuchstaben getrennt (*lowerCamelCase*).
 
 ```c
 // Variable
@@ -84,8 +84,8 @@ uint8_t invertiereLeds(uint8_t zuInvertierendeBits);
 ```
 
 ### 3.2 Konstanten und Makros (`UPPER_SNAKE_CASE`)
-* Namen von Konstanten und `#define`-Makros werden durchgehend in **Grossbuchstaben** geschrieben.
-* Zusammengesetzte Wörter werden mit einem Unterstrich `_` getrennt.
+- Namen von Konstanten und `#define`-Makros werden durchgehend in **Grossbuchstaben** geschrieben.
+- Zusammengesetzte Wörter werden mit einem Unterstrich `_` getrennt.
 
 ```c
 #define IN_SCHALTER  PINK
@@ -95,7 +95,7 @@ uint8_t invertiereLeds(uint8_t zuInvertierendeBits);
 ```
 
 ### 3.3 Eigene Datentypen (`typedef`)
-* Selbst definierte Datentypen (z. B. `enum`, `struct`) erhalten das Suffix `_t`, um sofort als Typ erkennbar zu sein.
+- Selbst definierte Datentypen (z. B. `enum`, `struct`) erhalten das Suffix `_t`, um sofort als Typ erkennbar zu sein.
 
 ```c
 // Definition eines Enumerated Types (enum)
@@ -150,7 +150,41 @@ bool     hatFehler        = false;
 
 ## 5. Dokumentation & Kommentare
 
-### 5.1 Funktionskommentare
+### 5.1 Dateikopf (File-Header)
+Jede `.c`- und `.h`-Datei muss zu Beginn den standardisierten Header-Block der MSW enthalten. Eine passende Vorlage steht im Repository unter [`Vorlage_Header.c`](https://github.com/msw-winterthur/C_Richtlinien/blob/master/Vorlagen/Vorlage_Header.c) zur Verfügung.
+
+```c
+/*********************************************************************************\
+*
+* MMMMMMMMMMMM   SSSSSSSSSSSS   WW   WW   WW   MECHATRONIK
+* MM   MM   MM   SS             WW   WW   WW   SCHULE
+* MM   MM   MM   SSSSSSSSSSSS   WW   WW   WW   WINTERTHUR
+* MM   MM   MM             SS   WW   WW   WW   
+* MM   MM   MM   SSSSSSSSSSSS   WWWWWWWWWWWW   www.msw.ch
+*
+*
+* Dateiname: main.c
+*
+* Autor    : [*/Autor/*]
+* Erstellt : [*/dd.mm.yyyy/*]
+*
+* Projekt  : [*/Muster/*]
+* Hardware : ATmega2560 von Atmel
+*
+* Copyright: MSW, E2
+*
+* Beschreibung:
+* =============
+* Siehe Aufgabenstellung
+*
+* Portbelegung:
+* =============
+* Siehe Hardwarestruktur
+*
+\*********************************************************************************/
+```
+
+### 5.2 Funktionskommentare
 Jede Funktion muss mit einem standardisierten Kommentarblock eingeleitet werden, der die Funktion, ihre Parameter und den Rückgabewert beschreibt.
 
 ```c
@@ -173,9 +207,9 @@ uint8_t invertiereLeds(uint8_t zuInvertierendeBits)
 }
 ```
 
-### 5.2 Zeilen- und Blockkommentare
-* Einzeilige Kommentare werden mit `//` eingeleitet.
-* Kommentare rechts vom Code beginnen eingerückt auf fixer Höhe oder direkt nach der Anweisung.
+### 5.3 Zeilen- und Blockkommentare
+- Einzeilige Kommentare werden mit `//` eingeleitet.
+- Kommentare rechts vom Code beginnen eingerückt auf fixer Höhe oder direkt nach der Anweisung.
 
 ```c
 // Definition des Eingangsports
@@ -184,8 +218,8 @@ uint8_t invertiereLeds(uint8_t zuInvertierendeBits)
 uint8_t zustand = 0; // Initialisierung des Systemzustands
 ```
 
-### 5.3 Ende-Markierungen von Blöcken
-* Das Ende von längeren Schleifen oder Hauptfunktionen wird mit einem kurzen Kommentar markiert (z. B. `// end while`, `// end main`).
+### 5.4 Ende-Markierungen von Blöcken
+- Das Ende von längeren Schleifen oder Hauptfunktionen wird mit einem kurzen Kommentar markiert (z. B. `// end while`, `// end main`).
 
 ```c
 while (1)
@@ -221,7 +255,7 @@ for (uint16_t i = 0; i < 4; i++)
 ```
 
 ### 6.3 `switch` / `case`-Anweisungen
-* `case`-Label stehen eingerückt im `switch`-Block, die Anweisungen darunter werden nochmals eingerückt.
+- `case`-Label stehen eingerückt im `switch`-Block, die Anweisungen darunter werden nochmals eingerückt.
 
 ```c
 switch (i)
@@ -252,6 +286,7 @@ Header-Dateien verhindern Mehrfach-Inkludierungen über Include-Guards (`#ifndef
 
 /*--- #includes -----------------------------------------------------------------*/
 #include <stdint.h>
+#include <stdbool.h>
 
 /*--- #define-Konstanten und Makros ---------------------------------------------*/
 #define BUFFER_SIZE 64
