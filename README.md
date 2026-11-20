@@ -57,13 +57,13 @@ if (bedeutung == 1)
 
 ```c
 // Richtig:
-for (i = 0; i < 4; i++)
+for (uint16_t i = 0; i < 4; i++)
 {
     resultat = messwert + 10;
 }
 
 // Falsch:
-// for(i=0;i<4;i++){ resultat=messwert+10; }
+// for(uint16_t i=0;i<4;i++){ resultat=messwert+10; }
 ```
 
 ---
@@ -214,7 +214,7 @@ else
 ### 6.2 `for`-Schleifen
 
 ```c
-for (i = 0; i < 4; i++)
+for (uint16_t i = 0; i < 4; i++)
 {
     verarbeiteDaten(i);
 }
