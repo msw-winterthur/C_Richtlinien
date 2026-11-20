@@ -9,14 +9,14 @@
 *
 * Dateiname: main.c
 *
-* Projekt  : Muster
+* Projekt  : [*/Muster/*]
 * Hardware : ATmega2560 von Atmel
 *
 * Copyright: MSW, E2
 *
 * Beschreibung:
 * =============
-* Siehe Prüfungsaufgabe
+* Siehe Aufgabenstellung
 *
 * Portbelegung:
 * =============
@@ -24,34 +24,34 @@
 *
 * Verlauf:
 * ========
-* Datum:      Autor:         Version   Grund der Änderung:
-* dd.mm.yyyy  M. Muster      V1.0      Neuerstellung
+* Datum:          Autor:         Version   Grund der Änderung:
+* [*/dd.mm.yyy/*] [*/Autor/*]    V01       Neuerstellung
 *
 \*********************************************************************************/
 
-//Standardisierte Datentypen
-#include <stdint.h>
-//ATmega2560v I/O-Definitionen
+/* Includes **********************************************************************/
 #include <avr/io.h>
 
-//Definition des Eingangsports
-#define SCHALTER    PINK
-//Definition des Ausgangsports
-#define LED         PORTA
-//Initialisierung des Ausgangsports
-#define INIT_LED    (DDRA = 0xFF)
-
-
+/* Defines (Konstanten) **********************************************************/
 
 
 /* Hauptprogramm *****************************************************************/
 int main (void)
 {    
-    INIT_LED;
+    // Variablen
     
-    //Endlosschlaufe
+    
+    // Initialisierung
+    
+    
+    // Endlosschlaufe
     while (1)
     {
+        // EINGABE
+        
+        // VERARBEITUNG
+        
+        // AUSGABE
         
     }                               // end while
 }                                   // end main
