@@ -9,6 +9,9 @@
 *
 * Dateiname: main.c
 *
+* Autor    : [*/Autor/*]
+* Erstellt : [*/dd.mm.yyyy/*]
+*
 * Projekt  : [*/Muster/*]
 * Hardware : ATmega2560 von Atmel
 *
@@ -21,11 +24,6 @@
 * Portbelegung:
 * =============
 * Siehe Hardwarestruktur
-*
-* Verlauf:
-* ========
-* Datum:          Autor:         Version   Grund der Änderung:
-* [*/dd.mm.yyy/*] [*/Autor/*]    V01       Neuerstellung
 *
 \*********************************************************************************/
 
